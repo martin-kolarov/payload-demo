@@ -59,9 +59,9 @@ export default buildConfig({
   },
   // This config helps us configure global or default features that the other editors can inherit
   editor: defaultLexical,
-  db: postgresAdapter({
-    client: {
-      url: process.env.DATABASE_URI || '',
+  db: vercelPostgresAdapter({
+    pool: {
+      connectionString: process.env.DATABASE_URL
     },
   }),
   collections: [Pages, Posts, Media, Categories, Users],
